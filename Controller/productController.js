@@ -5,7 +5,7 @@ const createProduct = async (req, res) => {
   try {
     const product = await Product.create({ name, price });
     product.save();
-    return res.status(200).send({ message: "Product Created",product });
+    return res.status(200).send({ message: "Product Created", product });
   } catch (error) {
     res.status(500).send(error.message);
   }
@@ -20,19 +20,20 @@ const getAllProducts = async (req, res) => {
   }
 };
 
-
-const getSingleProduct = async(req,res)=>{
+const getSingleProduct = async (req, res) => {
   try {
-    let product = await Product.findOne({_id:req.params.id}).populate("details");
+    let product = await Product.findOne({ _id: req.params.id }).populate(
+      "details"
+    );
     return res.status(200).send({
-                status: true,
-                product,
-                review: product.details.review,
-              });
+      status: true,
+      product,
+      // review: product.details.review,
+    });
   } catch (error) {
-    return res.status(500).send(error.message)
+    return res.status(500).send(error.message);
   }
-}
+};
 
 const updateProduct = async (req, res) => {
   const { id } = req.params;
