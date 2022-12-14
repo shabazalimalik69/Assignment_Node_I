@@ -6,15 +6,29 @@ const productSchema = new mongoose.Schema(
     price: { type: Number, required: true, default: 1 },
     createdAt: {
       type: String,
-      default: moment().format("YYYY/MM/DD") +"/"+ moment().format("hh:mm:ss"),
+      default: moment().format("YYYY/MM/DD") +"/"+ moment().format("hh/mm/ss"),
   },
   updatedAt: {
       type: String,
-      default: moment().format("YYYY/MM/DD") +"/"+ moment().format("hh:mm:ss"),
+      default: moment().format("YYYY/MM/DD") +"/"+ moment().format("hh/mm/ss"),
   },
   },
- 
+  {
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true },
+}
 );
+
+productSchema.virtual("details", {
+
+  ref: "review",
+  
+  foreignField: "userId",
+  
+  localField: "_id",
+  
+  justOne: true
+  }); 
 
 const Product = mongoose.model("product", productSchema);
 
