@@ -2,7 +2,6 @@ const Review = require("../Model/reviewModel");
 
 const createReview = async (req, res) => {
   try {
-    // let userId = `${Date.now()}${Math.floor(Math.random()*9999999)}`
     let review = await Review.create(req.body);
     review.save();
     return res.status(200).send({ message: "Review Created", review });

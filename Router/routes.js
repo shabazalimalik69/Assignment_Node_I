@@ -1,11 +1,5 @@
 const express = require("express");
-const {
-  createProduct,
-  getAllProducts,
-  getSingleProduct,
-  updateProduct,
-  deleteProduct,
-} = require("../Controller/productController");
+const { createBlog, getAllBlogs, getSingleBlog, updateBlog, deleteBlog } = require("../Controller/blogController");
 const {
   createReview,
   deleteReview,
@@ -13,11 +7,11 @@ const {
 
 const Router = express.Router();
 
-Router.post("/create_Product", createProduct);
-Router.get("/get_All_Products", getAllProducts);
-Router.get("/product/:id", getSingleProduct);
-Router.put("/updateProduct/:id", updateProduct);
-Router.delete("/deleteProduct/:id", deleteProduct);
+Router.post("/create_Blog", createBlog);
+Router.get("/get_All_Blogs", getAllBlogs);
+Router.get("/blog/:id", getSingleBlog);
+Router.put("/updateBlog/:id", updateBlog);
+Router.delete("/deleteBlog/:id", deleteBlog);
 
 Router.post("/createReview", createReview);
 Router.delete("/deleteReview/:id", deleteReview);

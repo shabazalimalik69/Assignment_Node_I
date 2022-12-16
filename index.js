@@ -3,13 +3,13 @@ const express = require("express");
 const cors = require("cors");
 const connectDB = require("./Config/db");
 const PORT = process.env.port || 7000;
-const productRouter = require("./Router/routes");
+const blogRouter = require("./Router/routes");
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 
-app.use("/", productRouter);
+app.use("/", blogRouter);
 
 // app.get("/",(req,res)=>{
 //     res.send("HomePage")

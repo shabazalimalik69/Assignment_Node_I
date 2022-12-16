@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
 const moment = require("moment");
-const productSchema = new mongoose.Schema(
+const blogSchema = new mongoose.Schema(
   {
-    name: { type: String, required: true, trim: true, unique: true },
-    price: { type: Number, required: true, default: 1 },
+    title: { type: String, required: true, trim: true, unique: true },
+    body: { type: String, required: true, trim: true },
     createdAt: {
       type: String,
       default:
@@ -21,12 +21,12 @@ const productSchema = new mongoose.Schema(
   }
 );
 
-productSchema.virtual("details", {
-  ref: "review",
+blogSchema.virtual("descriptions", {
+  ref: "description",
   foreignField: "userId",
   localField: "_id",
 });
 
-const Product = mongoose.model("product", productSchema);
+const Blog = mongoose.model("blog", blogSchema);
 
-module.exports = Product;
+module.exports = Blog;

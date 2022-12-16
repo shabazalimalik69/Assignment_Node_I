@@ -2,13 +2,12 @@ const mongoose = require("mongoose");
 const moment = require("moment");
 const reviewSchema = new mongoose.Schema(
   {
-    // userId:{type:String},
     userId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "userId",
       required: true,
     },
-    review: {
+    description: {
       type: String,
       required: true,
       trim: true,
@@ -30,6 +29,6 @@ const reviewSchema = new mongoose.Schema(
   }
 );
 
-const Review = mongoose.model("review", reviewSchema);
+const Review = mongoose.model("description", reviewSchema);
 
 module.exports = Review;
